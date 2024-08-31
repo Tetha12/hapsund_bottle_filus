@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan dalam Botol</title>
+    <style>
+        /* styles.css */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0f7fa;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        .instruction {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #00796b;
+        }
+
+        .bottle {
+            cursor: pointer;
+            position: relative;
+            width: 100px;
+            margin: 0 auto;
+            transition: transform 0.5s ease;
+        }
+
+        .bottle-neck {
+            width: 30px;
+            height: 50px;
+            background-color: #9dc3c1;
+            margin: 0 auto;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .bottle-body {
+            width: 80px;
+            height: 150px;
+            background-color: #b2dfdb;
+            margin: 0 auto;
+            border-radius: 40px 40px 10px 10px;
+            z-index: 1;
+            position: relative;
+            top: -5px;
+        }
+
+        .bottle-bottom {
+            width: 100px;
+            height: 10px;
+            background-color: #80cbc4;
+            margin: 0 auto;
+            border-radius: 50%;
+            position: relative;
+            top: -15px;
+        }
+
+        .bottle-cap {
+            width: 34px;
+            height: 15px;
+            background-color: #00796b;
+            position: absolute;
+            top: 0;
+            left: calc(50% - 17px);
+            border-radius: 5px;
+            transition: transform 0.5s ease;
+        }
+
+        .paper {
+            width: 150px;
+            height: 100px;
+            background-color: #fff8dc;
+            border: 2px solid #deb887;
+            border-radius: 10px;
+            position: absolute;
+            top: -120px; /* Start position above the bottle */
+            left: calc(50% - 75px);
+            transform: rotate(-3deg);
+            opacity: 0;
+            transition: transform 1s ease, opacity 1s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .paper p {
+            margin: 0;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .bottle.opened .bottle-cap {
+            transform: translateY(-50px) rotate(-30deg);
+        }
+
+        .bottle.opened .paper {
+            transform: translateY(-30px);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="instruction">Klik botol untuk melihat pesannya!</div>
+        <div class="bottle">
+            <div class="bottle-neck"></div>
+            <div class="bottle-body"></div>
+            <div class="bottle-bottom"></div>
+            <div class="bottle-cap"></div>
+            <div class="paper">
+                <p>Happy Sunday Minggu Filuss 👋 <a href="quotes.html">Buka Link ini ya Hehehe</a</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bottle = document.querySelector('.bottle');
+            const bottleCap = document.querySelector('.bottle-cap');
+            const paper = document.querySelector('.paper');
+
+            bottle.addEventListener('click', function() {
+                // Tambahkan kelas 'opened' untuk efek animasi
+                bottle.classList.add('opened');
+
+                // Tampilkan kertas dengan pesan setelah botol diklik
+                paper.style.display = 'flex';
+            });
+        });
+    </script>
+</body>
+</html>
